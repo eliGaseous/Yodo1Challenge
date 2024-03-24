@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class CallPlugInMethods : MonoBehaviour
 {
 
-    [SerializeField] private Text text;
-private int notZero = 1;
+	[SerializeField] private Text text;
+	private int notZero = 1;
 
-    public void PushButton(){
-        text.text = "" + notZero++;
-    }
+	public void PushButton()
+	{
+		text.text = "" + notZero++;
+	}
 }
