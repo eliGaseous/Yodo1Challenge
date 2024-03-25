@@ -27,9 +27,9 @@ public class CallPlugInMethods : MonoBehaviour
 	private bool isTracking = false;
 	private string dataSummary;
 	int dataPoints;
-	float minCPU, averageCPU, maxCPU;
-	float minRAM, averageRAM, maxRAM;
-	float minGPU, averageGPU, maxGPU;
+	float minCPU = 1000000, averageCPU, maxCPU;
+	float minRAM = 1000000, averageRAM, maxRAM;
+	float minGPU = 1000000, averageGPU, maxGPU;
 
 	public void StartTracking()
 	{
@@ -38,9 +38,11 @@ public class CallPlugInMethods : MonoBehaviour
 			text.text = "Tracking In progress, press the stop button to review data.";
 			return;
 		}
+
 		isTracking = true;
+		text.text = "Tracking In progress.";
+
 		StartCoroutine(GetInfo());
-		//Start Tracking
 	}
 
 	public void StopTracking()
@@ -50,9 +52,7 @@ public class CallPlugInMethods : MonoBehaviour
 			text.text = "Not currently tracking";
 			return;
 		}
-
 		isTracking = false;
-
 	}
 
 	private void UpdateText()
@@ -60,7 +60,7 @@ public class CallPlugInMethods : MonoBehaviour
 		text.text = "Usage Summary: \n";
 		text.text += $"CPU: \n Min: {minCPU} %\n Avg: {averageCPU} %\n Max: {maxCPU} %\n";
 		text.text += $"Ram: \n Min: {minRAM} MB,\n Avg: {averageRAM} MB\n Max: {maxRAM} MB\n";
-		text.text += $"CPU: \n Min: {minGPU} %\n Avg: {averageGPU} %\n Max: {maxGPU} %";
+		text.text += $"GPU: \n Min: {minGPU} %\n Avg: {averageGPU} %\n Max: {maxGPU} %";
 	}
 
 	IEnumerator GetInfo()
@@ -95,6 +95,8 @@ public class CallPlugInMethods : MonoBehaviour
 
 	private float IfMin(float newValue, float oldValue)
 	{
+		if(newValue == 0f) return oldValue;
+		
 		if (newValue < oldValue)
 		{
 			return newValue;

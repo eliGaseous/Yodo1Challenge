@@ -1,0 +1,6 @@
+framework module UnityFrameWorkTest {
+  umbrella header "UnityFrameWorkTest.h"
+  export *
+
+  module * { export * }
+}

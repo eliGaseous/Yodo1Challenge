@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.3708708, g: 0.37838137, b: 0.35725543, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -287,7 +287,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2011928768}
         m_TargetAssemblyTypeName: CallPlugInMethods, Assembly-CSharp
-        m_MethodName: PushButton
+        m_MethodName: StopTracking
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -472,7 +472,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2011928768}
         m_TargetAssemblyTypeName: CallPlugInMethods, Assembly-CSharp
-        m_MethodName: PushButton
+        m_MethodName: StartTracking
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -762,13 +762,26 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 100
-    m_Alignment: 4
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: '
+
+    Hello!
+
+
+    Press [Start],
+
+    Wait while data is gathered.
+
+
+    Press
+    [Stop],
+
+    You will then see a summary of the data.'
 --- !u!222 &1250235279
 CanvasRenderer:
   m_ObjectHideFlags: 0
