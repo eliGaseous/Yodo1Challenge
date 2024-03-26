@@ -38,6 +38,7 @@ public class CallPlugInMethods : MonoBehaviour
 			text.text = "Tracking In progress, press the stop button to review data.";
 			return;
 		}
+		ResetMinVars();
 
 		isTracking = true;
 		text.text = "Tracking In progress.";
@@ -53,6 +54,23 @@ public class CallPlugInMethods : MonoBehaviour
 			return;
 		}
 		isTracking = false;
+	}
+
+	private void ResetMinVars()
+	{
+		minCPU = 1000000;
+		averageCPU = 0;
+		maxCPU = 0;
+
+		minRAM = 1000000;
+		averageRAM = 0;
+		maxRAM = 0;
+	
+		minGPU = 1000000;
+		averageGPU = 0;
+		maxGPU = 0;
+
+		dataPoints = 0;
 	}
 
 	private void UpdateText()
@@ -95,8 +113,6 @@ public class CallPlugInMethods : MonoBehaviour
 
 	private float IfMin(float newValue, float oldValue)
 	{
-		if(newValue == 0f) return oldValue;
-		
 		if (newValue < oldValue)
 		{
 			return newValue;
@@ -117,6 +133,7 @@ public class CallPlugInMethods : MonoBehaviour
 	}
 
 	private float NewAverage(float newValue,float oldValue){
-		return ((oldValue * dataPoints) + newValue) / (dataPoints+1);
+		
+		return ((oldValue * dataPoints) + newValue) / (dataPoints+1f);
 	}
 }
