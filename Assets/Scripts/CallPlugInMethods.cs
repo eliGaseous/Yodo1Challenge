@@ -8,6 +8,7 @@ public class CallPlugInMethods : MonoBehaviour
 {
 
 	#region DllImport
+
 	/* Interface to native implementation */
 	[DllImport("__Internal")]
 	private static extern float _GetCPUUsage();
@@ -19,13 +20,13 @@ public class CallPlugInMethods : MonoBehaviour
 	[DllImport("__Internal")]
 	private static extern float _GetGPUUsage();
 
-	/* Public interface for use inside C# / JS code */
+	/* Public interface for use inside C#  */
 	#endregion
 
 
 	[SerializeField] private Text text;
 	private bool isTracking = false;
-	private string dataSummary;
+
 	int dataPoints;
 	float minCPU = 1000000, averageCPU, maxCPU;
 	float minRAM = 1000000, averageRAM, maxRAM;
@@ -38,12 +39,13 @@ public class CallPlugInMethods : MonoBehaviour
 			text.text = "Tracking In progress, press the stop button to review data.";
 			return;
 		}
-		ResetMinVars();
 
 		isTracking = true;
-		text.text = "Tracking In progress.";
 
+		ResetMinVars();
 		StartCoroutine(GetInfo());
+
+		text.text = "Tracking In progress.";
 	}
 
 	public void StopTracking()
@@ -53,6 +55,7 @@ public class CallPlugInMethods : MonoBehaviour
 			text.text = "Not currently tracking";
 			return;
 		}
+		//Coroutine -> while(isTracking)
 		isTracking = false;
 	}
 
